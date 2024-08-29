@@ -53,7 +53,7 @@ class TaskViewController: UIViewController {
         }
         
         let addAction = UIAlertAction(title: "Add", style: .default) { [weak self] _ in
-            guard let title = alert.textFields?[0].text, !title.isEmpty else { return }
+            guard let title = alert.textFields?.first?.text, !title.isEmpty else { return }
             
             DispatchQueue.global(qos: .background).async {
                 let newTask = Task(id: (self?.tasks.count ?? 0) + 1, title: title, isCompleted: false)
@@ -104,6 +104,32 @@ class TaskViewController: UIViewController {
             }
         }
     }
+    
+    private func toggleTaskCompletion(at indexPath: IndexPath) {
+        DispatchQueue.global(qos: .background).async { [weak self] in
+            self?.tasks[indexPath.row].isCompleted.toggle()
+            
+            DispatchQueue.main.async {
+                self?.tableView.reloadRows(at: [indexPath], with: .automatic)
+            }
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let editAction = UIContextualAction(style: .normal, title: "Edit") { [weak self] _, _, completionHandler in
+            self?.editTask(at: indexPath)
+            completionHandler(true)
+        }
+        editAction.backgroundColor = .systemBlue
+        
+        let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { [weak self] _, _, completionHandler in
+            self?.deleteTask(at: indexPath)
+            completionHandler(true)
+        }
+        
+        let configuration = UISwipeActionsConfiguration(actions: [deleteAction, editAction])
+        return configuration
+    }
 }
 
 extension TaskViewController: UITableViewDataSource, UITableViewDelegate {
@@ -120,12 +146,7 @@ extension TaskViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        editTask(at: indexPath)
-    }
-    
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            deleteTask(at: indexPath)
-        }
+        toggleTaskCompletion(at: indexPath)
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }
