@@ -13,6 +13,7 @@
 		1C86692B2C80D1CC004B5381 /* ToDoList.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1C8669292C80D1CC004B5381 /* ToDoList.xcdatamodeld */; };
 		1C86692D2C80D1CE004B5381 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1C86692C2C80D1CE004B5381 /* Assets.xcassets */; };
 		1C8669302C80D1CE004B5381 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 1C86692F2C80D1CE004B5381 /* Base */; };
+		1C86693B2C80DA5E004B5381 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C86693A2C80DA5E004B5381 /* Model.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		1C86692C2C80D1CE004B5381 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1C86692F2C80D1CE004B5381 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1C8669312C80D1CE004B5381 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1C86693A2C80DA5E004B5381 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,9 +58,10 @@
 		1C86691F2C80D1CC004B5381 /* ToDoList */ = {
 			isa = PBXGroup;
 			children = (
-				1C8669242C80D1CC004B5381 /* ViewController.swift */,
-				1C8669392C80D907004B5381 /* CoreData */,
 				1C8669372C80D8CD004B5381 /* App */,
+				1C8669242C80D1CC004B5381 /* ViewController.swift */,
+				1C86693A2C80DA5E004B5381 /* Model.swift */,
+				1C8669392C80D907004B5381 /* CoreData */,
 				1C8669382C80D8DD004B5381 /* Resource */,
 			);
 			path = ToDoList;
@@ -161,6 +164,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1C86693B2C80DA5E004B5381 /* Model.swift in Sources */,
 				1C8669252C80D1CC004B5381 /* ViewController.swift in Sources */,
 				1C8669212C80D1CC004B5381 /* AppDelegate.swift in Sources */,
 				1C8669232C80D1CC004B5381 /* SceneDelegate.swift in Sources */,
@@ -310,7 +314,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = JYKJ45QBU6;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = ToDoList/Info.plist;
+				INFOPLIST_FILE = ToDoList/Resource/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -342,7 +346,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = JYKJ45QBU6;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = ToDoList/Info.plist;
+				INFOPLIST_FILE = ToDoList/Resource/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
