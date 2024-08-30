@@ -1,17 +1,21 @@
 import UIKit
+import CoreData
 
 class TaskViewController: UIViewController {
     
     private var tasks: [Task] = []
     private let tableView = UITableView()
+    private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        loadTasksFromCoreData()
         fetchTasks()
     }
 
     private func setupUI() {
+        title = "Tasks"
         view.addSubview(tableView)
         tableView.frame = view.bounds
         tableView.dataSource = self
@@ -21,10 +25,66 @@ class TaskViewController: UIViewController {
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add Task", style: .plain, target: self, action: #selector(addTask))
     }
     
+    private func loadTasksFromCoreData() {
+        let request: NSFetchRequest<TaskEntity> = TaskEntity.fetchRequest()
+        do {
+            let entities = try context.fetch(request)
+            tasks = entities.map { Task(from: $0) }
+            tableView.reloadData()
+        } catch {
+            print("Error loading tasks from Core Data: \(error)")
+        }
+    }
+    
+    private func saveTaskToCoreData(_ task: Task) {
+        let entity = TaskEntity(context: context)
+        entity.id = Int64(task.id)
+        entity.title = task.title
+        entity.isCompleted = task.isCompleted
+        saveContext()
+    }
+    
+    private func deleteTaskFromCoreData(at indexPath: IndexPath) {
+        let request: NSFetchRequest<TaskEntity> = TaskEntity.fetchRequest()
+        request.predicate = NSPredicate(format: "id == %d", tasks[indexPath.row].id)
+        
+        do {
+            if let entity = try context.fetch(request).first {
+                context.delete(entity)
+                saveContext()
+            }
+        } catch {
+            print("Error deleting task from Core Data: \(error)")
+        }
+    }
+    
+    private func updateTaskInCoreData(_ task: Task) {
+        let request: NSFetchRequest<TaskEntity> = TaskEntity.fetchRequest()
+        request.predicate = NSPredicate(format: "id == %d", task.id)
+        
+        do {
+            if let entity = try context.fetch(request).first {
+                entity.title = task.title
+                entity.isCompleted = task.isCompleted
+                saveContext()
+            }
+        } catch {
+            print("Error updating task in Core Data: \(error)")
+        }
+    }
+    
+    private func saveContext() {
+        do {
+            try context.save()
+        } catch {
+            print("Error saving Core Data context: \(error)")
+        }
+    }
+    
     private func fetchTasks() {
         DispatchQueue.global(qos: .background).async { [weak self] in
             guard let url = URL(string: "https://dummyjson.com/todos") else {return}
-            let task = URLSession.shared.dataTask(with: url) { [weak self] data, response, error in
+            let task = URLSession.shared.dataTask(with: url) { data, response, error in
                 if let error = error {
                     print("Error fetching tasks: \(error)")
                     return
@@ -34,8 +94,9 @@ class TaskViewController: UIViewController {
                 
                 do {
                     let decodedResponse = try JSONDecoder().decode(TodoResponse.self, from: data)
-                    self?.tasks = decodedResponse.todos
                     DispatchQueue.main.async {
+                        self?.tasks = decodedResponse.todos
+                        self?.tasks.forEach { self?.saveTaskToCoreData($0) }
                         self?.tableView.reloadData()
                     }
                 } catch {
@@ -58,6 +119,7 @@ class TaskViewController: UIViewController {
             DispatchQueue.global(qos: .background).async {
                 let newTask = Task(id: (self?.tasks.count ?? 0) + 1, title: title, isCompleted: false)
                 self?.tasks.append(newTask)
+                self?.saveTaskToCoreData(newTask)
                 
                 DispatchQueue.main.async {
                     self?.tableView.reloadData()
@@ -83,6 +145,7 @@ class TaskViewController: UIViewController {
             
             DispatchQueue.global(qos: .background).async {
                 self?.tasks[indexPath.row].title = newTitle
+                self?.updateTaskInCoreData(self!.tasks[indexPath.row])
                 
                 DispatchQueue.main.async {
                     self?.tableView.reloadData()
@@ -97,6 +160,7 @@ class TaskViewController: UIViewController {
     
     private func deleteTask(at indexPath: IndexPath) {
         DispatchQueue.global(qos: .background).async { [weak self] in
+            self?.deleteTaskFromCoreData(at: indexPath)
             self?.tasks.remove(at: indexPath.row)
             
             DispatchQueue.main.async {
@@ -108,6 +172,7 @@ class TaskViewController: UIViewController {
     private func toggleTaskCompletion(at indexPath: IndexPath) {
         DispatchQueue.global(qos: .background).async { [weak self] in
             self?.tasks[indexPath.row].isCompleted.toggle()
+            self?.updateTaskInCoreData(self!.tasks[indexPath.row])
             
             DispatchQueue.main.async {
                 self?.tableView.reloadRows(at: [indexPath], with: .automatic)
