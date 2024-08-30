@@ -82,6 +82,12 @@ class TaskViewController: UIViewController {
     }
     
     private func fetchTasks() {
+        let request: NSFetchRequest<TaskEntity> = TaskEntity.fetchRequest()
+        let count = try? context.count(for: request)
+        
+        if count ?? 0 > 0 {
+            return
+        }
         DispatchQueue.global(qos: .background).async { [weak self] in
             guard let url = URL(string: "https://dummyjson.com/todos") else {return}
             let task = URLSession.shared.dataTask(with: url) { data, response, error in
