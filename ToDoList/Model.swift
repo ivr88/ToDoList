@@ -1,4 +1,5 @@
 import Foundation
+import CoreData
 
 struct TodoResponse: Codable {
     let todos: [Task]
@@ -16,5 +17,17 @@ struct Task: Codable {
         case id
         case title = "todo"
         case isCompleted = "completed"
+    }
+    
+    init(id: Int, title: String, isCompleted: Bool) {
+        self.id = id
+        self.title = title
+        self.isCompleted = isCompleted
+    }
+    
+    init(from entity: TaskEntity) {
+        self.id = Int(entity.id)
+        self.title = entity.title ?? ""
+        self.isCompleted = entity.isCompleted
     }
 }
