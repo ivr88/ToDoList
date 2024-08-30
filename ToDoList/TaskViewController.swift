@@ -113,6 +113,22 @@ class TaskViewController: UIViewController {
         }
     }
     
+    private func addOrUpdateTask(_ newTask: Task) {
+        DispatchQueue.global(qos: .background).async { [weak self] in
+            if let existingTaskIndex = self?.tasks.firstIndex(where: { $0.id == newTask.id }) {
+                self?.tasks[existingTaskIndex] = newTask
+                self?.updateTaskInCoreData(newTask)
+            } else {
+                self?.tasks.append(newTask)
+                self?.saveTaskToCoreData(newTask)
+            }
+
+            DispatchQueue.main.async {
+                self?.tableView.reloadData()
+            }
+        }
+    }
+    
     @objc private func addTask() {
         let alert = UIAlertController(title: "New Task", message: "Enter task details", preferredStyle: .alert)
         alert.addTextField { textField in
@@ -123,13 +139,9 @@ class TaskViewController: UIViewController {
             guard let title = alert.textFields?.first?.text, !title.isEmpty else { return }
             
             DispatchQueue.global(qos: .background).async {
-                let newTask = Task(id: (self?.tasks.count ?? 0) + 1, title: title, isCompleted: false)
-                self?.tasks.append(newTask)
-                self?.saveTaskToCoreData(newTask)
-                
-                DispatchQueue.main.async {
-                    self?.tableView.reloadData()
-                }
+                let newTaskID = (self?.tasks.map { $0.id }.max() ?? 0) + 1
+                let newTask = Task(id: newTaskID, title: title, isCompleted: false)
+                self?.addOrUpdateTask(newTask)
             }
         }
         
