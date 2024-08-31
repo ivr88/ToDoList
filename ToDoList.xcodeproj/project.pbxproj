@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1C3992442C8371E100080092 /* Interactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3992432C8371E100080092 /* Interactor.swift */; };
 		1C8669212C80D1CC004B5381 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C8669202C80D1CC004B5381 /* AppDelegate.swift */; };
 		1C8669232C80D1CC004B5381 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C8669222C80D1CC004B5381 /* SceneDelegate.swift */; };
 		1C8669252C80D1CC004B5381 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C8669242C80D1CC004B5381 /* View.swift */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1C3992432C8371E100080092 /* Interactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Interactor.swift; sourceTree = "<group>"; };
 		1C86691D2C80D1CC004B5381 /* ToDoList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDoList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1C8669202C80D1CC004B5381 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1C8669222C80D1CC004B5381 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -44,6 +46,7 @@
 			children = (
 				1C8669242C80D1CC004B5381 /* View.swift */,
 				1C86693A2C80DA5E004B5381 /* Entity.swift */,
+				1C3992432C8371E100080092 /* Interactor.swift */,
 			);
 			path = VIPER;
 			sourceTree = "<group>";
@@ -172,6 +175,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1C3992442C8371E100080092 /* Interactor.swift in Sources */,
 				1C86693B2C80DA5E004B5381 /* Entity.swift in Sources */,
 				1C8669252C80D1CC004B5381 /* View.swift in Sources */,
 				1C8669212C80D1CC004B5381 /* AppDelegate.swift in Sources */,
