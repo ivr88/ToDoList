@@ -2,6 +2,7 @@ import UIKit
 import CoreData
 
 protocol TaskInteractorProtocol: AnyObject {
+    var presenter: TaskInteractorOutputProtocol? { get set }
     func fetchTasks()
     func addTask(withTitle title: String)
     func editTask(at index: Int, withTitle title: String)
