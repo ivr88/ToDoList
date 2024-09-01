@@ -45,6 +45,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1C16B6192C847F93000C240D /* Splash */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Splash;
+			sourceTree = "<group>";
+		};
 		1C39923E2C836CE500080092 /* VIPER */ = {
 			isa = PBXGroup;
 			children = (
@@ -77,6 +84,7 @@
 			isa = PBXGroup;
 			children = (
 				1C8669372C80D8CD004B5381 /* App */,
+				1C16B6192C847F93000C240D /* Splash */,
 				1C39923E2C836CE500080092 /* VIPER */,
 				1C8669392C80D907004B5381 /* CoreData */,
 				1C8669382C80D8DD004B5381 /* Resource */,
