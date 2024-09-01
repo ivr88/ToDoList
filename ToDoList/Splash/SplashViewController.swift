@@ -1,29 +1,49 @@
-//
-//  SplashViewController.swift
-//  ToDoList
-//
-//  Created by Вадим Исламов on 01.09.2024.
-//
-
 import UIKit
 
 class SplashViewController: UIViewController {
+    
+    private let logoImageView: UIImageView = {
+        let imageView = UIImageView(image: UIImage(named: "Splash"))
+        imageView.contentMode = .scaleAspectFit
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        setupUI()
+        setupConstraint()
+        setupShow()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    private func setupUI() {
+        view.backgroundColor = .white
+        view.addSubview(logoImageView)
     }
-    */
+    
+    func setupConstraint() {
+        NSLayoutConstraint.activate([
+            logoImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            logoImageView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            logoImageView.widthAnchor.constraint(equalToConstant: 200),
+            logoImageView.heightAnchor.constraint(equalToConstant: 200)
+        ])
+    }
+    
+    func setupShow() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
+            self.showMainApp()
+        }
+    }
+    
+    private func showMainApp() {
+        guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+              let sceneDelegate = windowScene.delegate as? SceneDelegate else { return }
+        
+        let taskModule = TaskRouter.createModule()
+        let navigationController = UINavigationController(rootViewController: taskModule)
+        sceneDelegate.window?.rootViewController = navigationController
+        sceneDelegate.window?.makeKeyAndVisible()
+    }
 
 }
