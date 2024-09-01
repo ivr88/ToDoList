@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1C16B61B2C847FE1000C240D /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C16B61A2C847FE1000C240D /* SplashViewController.swift */; };
 		1C3992442C8371E100080092 /* Interactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3992432C8371E100080092 /* Interactor.swift */; };
 		1C3992462C83733E00080092 /* Presenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3992452C83733E00080092 /* Presenter.swift */; };
 		1C3992482C8373A800080092 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3992472C8373A800080092 /* Router.swift */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1C16B61A2C847FE1000C240D /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		1C3992432C8371E100080092 /* Interactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Interactor.swift; sourceTree = "<group>"; };
 		1C3992452C83733E00080092 /* Presenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Presenter.swift; sourceTree = "<group>"; };
 		1C3992472C8373A800080092 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
@@ -45,6 +47,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1C16B6192C847F93000C240D /* Splash */ = {
+			isa = PBXGroup;
+			children = (
+				1C16B61A2C847FE1000C240D /* SplashViewController.swift */,
+			);
+			path = Splash;
+			sourceTree = "<group>";
+		};
 		1C39923E2C836CE500080092 /* VIPER */ = {
 			isa = PBXGroup;
 			children = (
@@ -77,6 +87,7 @@
 			isa = PBXGroup;
 			children = (
 				1C8669372C80D8CD004B5381 /* App */,
+				1C16B6192C847F93000C240D /* Splash */,
 				1C39923E2C836CE500080092 /* VIPER */,
 				1C8669392C80D907004B5381 /* CoreData */,
 				1C8669382C80D8DD004B5381 /* Resource */,
@@ -184,6 +195,7 @@
 				1C3992482C8373A800080092 /* Router.swift in Sources */,
 				1C3992442C8371E100080092 /* Interactor.swift in Sources */,
 				1C3992462C83733E00080092 /* Presenter.swift in Sources */,
+				1C16B61B2C847FE1000C240D /* SplashViewController.swift in Sources */,
 				1C86693B2C80DA5E004B5381 /* Entity.swift in Sources */,
 				1C8669252C80D1CC004B5381 /* View.swift in Sources */,
 				1C8669212C80D1CC004B5381 /* AppDelegate.swift in Sources */,
