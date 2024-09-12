@@ -18,6 +18,8 @@
 		1C86692D2C80D1CE004B5381 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1C86692C2C80D1CE004B5381 /* Assets.xcassets */; };
 		1C8669302C80D1CE004B5381 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 1C86692F2C80D1CE004B5381 /* Base */; };
 		1C86693B2C80DA5E004B5381 /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C86693A2C80DA5E004B5381 /* Entity.swift */; };
+		1C8790832C931238009ED58C /* CoreDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C8790822C931238009ED58C /* CoreDataService.swift */; };
+		1C8790862C931377009ED58C /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C8790852C931377009ED58C /* APIService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +36,8 @@
 		1C86692F2C80D1CE004B5381 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1C8669312C80D1CE004B5381 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1C86693A2C80DA5E004B5381 /* Entity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entity.swift; sourceTree = "<group>"; };
+		1C8790822C931238009ED58C /* CoreDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataService.swift; sourceTree = "<group>"; };
+		1C8790852C931377009ED58C /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +90,7 @@
 		1C86691F2C80D1CC004B5381 /* ToDoList */ = {
 			isa = PBXGroup;
 			children = (
+				1C8790842C931369009ED58C /* APIService */,
 				1C8669372C80D8CD004B5381 /* App */,
 				1C16B6192C847F93000C240D /* Splash */,
 				1C39923E2C836CE500080092 /* VIPER */,
@@ -117,9 +122,26 @@
 		1C8669392C80D907004B5381 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
+				1C8790812C9311A8009ED58C /* CoreDataService */,
 				1C8669292C80D1CC004B5381 /* ToDoList.xcdatamodeld */,
 			);
 			path = CoreData;
+			sourceTree = "<group>";
+		};
+		1C8790812C9311A8009ED58C /* CoreDataService */ = {
+			isa = PBXGroup;
+			children = (
+				1C8790822C931238009ED58C /* CoreDataService.swift */,
+			);
+			path = CoreDataService;
+			sourceTree = "<group>";
+		};
+		1C8790842C931369009ED58C /* APIService */ = {
+			isa = PBXGroup;
+			children = (
+				1C8790852C931377009ED58C /* APIService.swift */,
+			);
+			path = APIService;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -194,7 +216,9 @@
 			files = (
 				1C3992482C8373A800080092 /* Router.swift in Sources */,
 				1C3992442C8371E100080092 /* Interactor.swift in Sources */,
+				1C8790832C931238009ED58C /* CoreDataService.swift in Sources */,
 				1C3992462C83733E00080092 /* Presenter.swift in Sources */,
+				1C8790862C931377009ED58C /* APIService.swift in Sources */,
 				1C16B61B2C847FE1000C240D /* SplashViewController.swift in Sources */,
 				1C86693B2C80DA5E004B5381 /* Entity.swift in Sources */,
 				1C8669252C80D1CC004B5381 /* View.swift in Sources */,
