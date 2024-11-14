@@ -25,10 +25,17 @@ class TaskInteractor: TaskInteractorProtocol {
     func fetchTasks() {
         tasks = coreDataService.fetchTasks()
         if tasks.isEmpty {
-            tasks = apiService.fetchTasks()
-            tasks.forEach { coreDataService.saveTask($0) }
+            apiService.fetchTasks { [weak self] fetchedTasks in
+                guard let task = self else { return }
+                task.tasks = fetchedTasks
+                fetchedTasks.forEach { task.coreDataService.saveTask($0) }
+                DispatchQueue.main.async {
+                    task.presenter?.didFetchTasks(task.tasks)
+                }
+            }
+        } else {
+            presenter?.didFetchTasks(tasks)
         }
-        presenter?.didFetchTasks(tasks)
     }
     
     func addTask(withTitle title: String) {
