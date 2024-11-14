@@ -1,38 +1,36 @@
 import Foundation
 
 protocol TaskAPIServiceProtocol {
-    func fetchTasks() -> [Task]
+    func fetchTasks(completion: @escaping ([Task]) -> Void)
 }
 
 class APIService: TaskAPIServiceProtocol {
-    
-    func fetchTasks() -> [Task] {
+    func fetchTasks(completion: @escaping ([Task]) -> Void) {
         guard let url = URL(string: "https://dummyjson.com/todos") else {
             print("Invalid URL")
-            return []
+            completion([])
+            return
         }
-        
-        var tasks: [Task] = []
-        
-        let task = URLSession.shared.dataTask(with: url) { data, response, error in
+
+        URLSession.shared.dataTask(with: url) { data, _, error in
             if let error = error {
                 print("Error fetching tasks: \(error)")
+                completion([])
                 return
             }
-            
+
             guard let data = data else {
+                completion([])
                 return
             }
-            
+
             do {
                 let decodedResponse = try JSONDecoder().decode(TodoResponse.self, from: data)
-                tasks = decodedResponse.todos
+                completion(decodedResponse.todos)
             } catch {
                 print("Error decoding JSON: \(error)")
+                completion([])
             }
-        }
-        task.resume()
-        
-        return tasks
+        }.resume()
     }
 }
