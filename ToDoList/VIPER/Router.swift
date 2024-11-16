@@ -10,7 +10,8 @@ class TaskRouter: TaskRouterProtocol {
         let presenter = TaskPresenter()
         let coreDataService = CoreDataService()
         let apiService = APIService()
-        let interactor = TaskInteractor(coreDataService: coreDataService, apiService: apiService)
+        let repository = TaskRepository(coreDataService: coreDataService, apiService: apiService)
+        let interactor = TaskInteractor(repository: repository)
         let router: TaskRouterProtocol = TaskRouter()
         viewController.presenter = presenter
         presenter.view = viewController
