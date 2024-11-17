@@ -113,8 +113,31 @@ extension TaskViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         let task = getTask(at: indexPath)
-        cell.textLabel?.text = task.title
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd/MM/yy"
+        let creationDate = dateFormatter.string(from: task.creationDate ?? Date())
+        
+        let titleAttributes: [NSAttributedString.Key: Any] = [
+            .font: UIFont.systemFont(ofSize: 16),
+            .foregroundColor: UIColor.label
+        ]
+        let titleText = NSAttributedString(string: task.title, attributes: titleAttributes)
+        
+        let dateAttributes: [NSAttributedString.Key: Any] = [
+            .font: UIFont.systemFont(ofSize: 12),
+            .foregroundColor: UIColor.gray
+        ]
+        let dateText = NSAttributedString(string: "\n\(creationDate)", attributes: dateAttributes)
+        
+        let combinedText = NSMutableAttributedString()
+        combinedText.append(titleText)
+        combinedText.append(dateText)
+        
+        cell.textLabel?.numberOfLines = 0
+        cell.textLabel?.attributedText = combinedText
         cell.accessoryType = task.isCompleted ? .checkmark : .none
+        
         return cell
     }
     
