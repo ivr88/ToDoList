@@ -27,6 +27,7 @@ class CoreDataService: TaskServiceProtocol {
         entity.id = Int64(task.id)
         entity.title = task.title
         entity.isCompleted = task.isCompleted
+        entity.creationDate = task.creationDate
         saveContext()
     }
     
