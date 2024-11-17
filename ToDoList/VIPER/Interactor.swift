@@ -20,39 +20,57 @@ class TaskInteractor: TaskInteractorProtocol {
     }
 
     func fetchTasks() {
-        repository.fetchTasks { [weak self] fetchedTasks in
-            guard let self = self else { return }
-            self.tasks = fetchedTasks
+        DispatchQueue.global(qos: .userInitiated).async {
+            self.repository.fetchTasks { [weak self] fetchedTasks in
+                guard let self = self else { return }
+                self.tasks = fetchedTasks
+                DispatchQueue.main.async {
+                    self.presenter?.didFetchTasks(self.tasks)
+                }
+            }
+        }
+    }
+
+    func addTask(withTitle title: String) {
+        DispatchQueue.global(qos: .userInitiated).async {
+            let newTaskID = (self.tasks.map { $0.id }.max() ?? 0) + 1
+            let newTask = Task(id: newTaskID, title: title, isCompleted: false)
+            self.tasks.append(newTask)
+            self.repository.saveTask(newTask)
             DispatchQueue.main.async {
                 self.presenter?.didFetchTasks(self.tasks)
             }
         }
     }
 
-    func addTask(withTitle title: String) {
-        let newTaskID = (tasks.map { $0.id }.max() ?? 0) + 1
-        let newTask = Task(id: newTaskID, title: title, isCompleted: false)
-        tasks.append(newTask)
-        repository.saveTask(newTask)
-        presenter?.didFetchTasks(tasks)
-    }
-
     func editTask(at index: Int, withTitle title: String) {
-        tasks[index].title = title
-        repository.updateTask(tasks[index])
-        presenter?.didFetchTasks(tasks)
+        DispatchQueue.global(qos: .userInitiated).async {
+            self.tasks[index].title = title
+            self.repository.updateTask(self.tasks[index])
+            DispatchQueue.main.async {
+                self.presenter?.didFetchTasks(self.tasks)
+            }
+        }
     }
 
     func deleteTask(at index: Int) {
-        let taskID = tasks[index].id
-        tasks.remove(at: index)
-        repository.deleteTask(withID: taskID)
-        presenter?.didFetchTasks(tasks)
+        DispatchQueue.global(qos: .userInitiated).async {
+            let taskID = self.tasks[index].id
+            self.tasks.remove(at: index)
+            self.repository.deleteTask(withID: taskID)
+            DispatchQueue.main.async {
+                self.presenter?.didFetchTasks(self.tasks)
+            }
+        }
     }
 
     func toggleTaskCompletion(at index: Int) {
-        tasks[index].isCompleted.toggle()
-        repository.updateTask(tasks[index])
-        presenter?.didFetchTasks(tasks)
+        DispatchQueue.global(qos: .userInitiated).async {
+            self.tasks[index].isCompleted.toggle()
+            self.repository.updateTask(self.tasks[index])
+            DispatchQueue.main.async {
+                self.presenter?.didFetchTasks(self.tasks)
+            }
+        }
     }
 }
