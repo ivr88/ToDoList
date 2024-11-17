@@ -34,7 +34,7 @@ class TaskInteractor: TaskInteractorProtocol {
     func addTask(withTitle title: String) {
         DispatchQueue.global(qos: .userInitiated).async {
             let newTaskID = (self.tasks.map { $0.id }.max() ?? 0) + 1
-            let newTask = Task(id: newTaskID, title: title, isCompleted: false)
+            let newTask = Task(id: newTaskID, title: title, isCompleted: false, creationDate: Date())
             self.tasks.append(newTask)
             self.repository.saveTask(newTask)
             DispatchQueue.main.async {
