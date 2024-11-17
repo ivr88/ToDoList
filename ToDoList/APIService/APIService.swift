@@ -25,7 +25,9 @@ class APIService: TaskAPIServiceProtocol {
             }
 
             do {
-                let decodedResponse = try JSONDecoder().decode(TodoResponse.self, from: data)
+                let decoder = JSONDecoder()
+                decoder.dateDecodingStrategy = .iso8601
+                let decodedResponse = try decoder.decode(TodoResponse.self, from: data)
                 completion(decodedResponse.todos)
             } catch {
                 print("Error decoding JSON: \(error)")
