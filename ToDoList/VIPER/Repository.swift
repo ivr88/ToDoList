@@ -21,8 +21,11 @@ class TaskRepository: TaskRepositoryProtocol {
         let tasks = coreDataService.fetchTasks()
         if tasks.isEmpty {
             apiService.fetchTasks { fetchedTasks in
-                fetchedTasks.forEach { self.coreDataService.saveTask($0) }
-                completion(fetchedTasks)
+                let tasksWithDate = fetchedTasks.map { task in
+                    Task(id: task.id, title: task.title, isCompleted: task.isCompleted, creationDate: Date())
+                }
+                tasksWithDate.forEach { self.coreDataService.saveTask($0) }
+                completion(tasksWithDate)
             }
         } else {
             completion(tasks)
@@ -30,7 +33,9 @@ class TaskRepository: TaskRepositoryProtocol {
     }
 
     func saveTask(_ task: Task) {
-        coreDataService.saveTask(task)
+        var taskWithDate = task
+        taskWithDate.creationDate = Date()
+        coreDataService.saveTask(taskWithDate)
     }
 
     func updateTask(_ task: Task) {
