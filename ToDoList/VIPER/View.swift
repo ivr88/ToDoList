@@ -146,13 +146,21 @@ extension TaskViewController: UISearchResultsUpdating {
     
     private func updateFilteredTasks(for query: String?) {
         guard let query = query, !query.isEmpty else {
-            isSearching = false
-            filteredTasks.removeAll()
-            tableView.reloadData()
+            DispatchQueue.main.async {
+                self.isSearching = false
+                self.filteredTasks = []
+                self.tableView.reloadData()
+            }
             return
         }
-        isSearching = true
-        filteredTasks = tasks.filter { $0.title.lowercased().contains(query.lowercased()) }
-        tableView.reloadData()
+        
+        DispatchQueue.global(qos: .userInitiated).async {
+            let filtered = self.tasks.filter { $0.title.lowercased().contains(query.lowercased()) }
+            DispatchQueue.main.async {
+                self.isSearching = true
+                self.filteredTasks = filtered
+                self.tableView.reloadData()
+            }
+        }
     }
 }
