@@ -63,20 +63,13 @@ class TaskViewController: UIViewController {
     
     func editTask(at indexPath: IndexPath) {
         let task = getTask(at: indexPath)
+        let editViewController = TaskEditRouter.createModule(withTask: task)
         
-        let alert = UIAlertController(title: "Edit Task", message: nil, preferredStyle: .alert)
-        alert.addTextField { textField in
-            textField.text = task.title
+        if let editVC = editViewController as? TaskEditViewController {
+            editVC.delegate = self 
         }
         
-        let saveAction = UIAlertAction(title: "Save", style: .default) { [weak self] _ in
-            guard let newTitle = alert.textFields?.first?.text, !newTitle.isEmpty else { return }
-            self?.presenter?.editTask(at: indexPath.row, withTitle: newTitle)
-        }
-        
-        alert.addAction(saveAction)
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
-        present(alert, animated: true)
+        navigationController?.pushViewController(editViewController, animated: true)
     }
     
     func deleteTask(at indexPath: IndexPath) {
@@ -185,5 +178,11 @@ extension TaskViewController: UISearchResultsUpdating {
                 self.tableView.reloadData()
             }
         }
+    }
+}
+
+extension TaskViewController: TaskEditDelegate {
+    func didUpdateTask() {
+        presenter?.viewDidLoad()
     }
 }
