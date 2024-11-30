@@ -21,12 +21,11 @@ class TaskViewController: UIViewController {
         setupUI()
         setupSearchController()
         presenter?.viewDidLoad()
+        setupTitle()
     }
 
     private func setupUI() {
-        title = "Задачи"
         view.backgroundColor = .black
-
         view.addSubview(tableView)
         tableView.frame = view.bounds
         tableView.dataSource = self
@@ -35,7 +34,7 @@ class TaskViewController: UIViewController {
         tableView.separatorStyle = .singleLine
         tableView.separatorColor = .gray
         tableView.backgroundColor = .black
-        
+
         navigationItem.rightBarButtonItem = UIBarButtonItem(
             image: UIImage(systemName: "square.and.pencil"),
             style: .plain,
@@ -43,6 +42,19 @@ class TaskViewController: UIViewController {
             action: #selector(addTask)
         )
         navigationItem.rightBarButtonItem?.tintColor = .systemYellow
+    }
+    
+    private func setupTitle() {
+        let titleLabel = UILabel()
+        titleLabel.text = "Задачи"
+        titleLabel.textColor = .white
+        titleLabel.font = UIFont.systemFont(ofSize: 34, weight: .bold)
+        titleLabel.sizeToFit()
+
+        let leftAlignedView = UIView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: 44))
+        titleLabel.frame.origin = CGPoint(x: 0, y: (leftAlignedView.bounds.height - titleLabel.bounds.height) / 2)
+        leftAlignedView.addSubview(titleLabel)
+        navigationItem.titleView = leftAlignedView
     }
     
     private func setupNavigationBarAppearance() {
