@@ -17,26 +17,49 @@ class TaskViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupNavigationBarAppearance()
         setupUI()
         setupSearchController()
         presenter?.viewDidLoad()
     }
 
     private func setupUI() {
-        title = "Tasks"
+        title = "Задачи"
+        view.backgroundColor = .black
+
         view.addSubview(tableView)
         tableView.frame = view.bounds
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
+        tableView.register(TaskTableViewCell.self, forCellReuseIdentifier: "Cell")
+        tableView.separatorStyle = .singleLine
+        tableView.separatorColor = .gray
+        tableView.backgroundColor = .black
         
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add Task", style: .plain, target: self, action: #selector(addTask))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(
+            image: UIImage(systemName: "square.and.pencil"),
+            style: .plain,
+            target: self,
+            action: #selector(addTask)
+        )
+        navigationItem.rightBarButtonItem?.tintColor = .systemYellow
+    }
+    
+    private func setupNavigationBarAppearance() {
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithOpaqueBackground()
+        appearance.backgroundColor = .black
+        appearance.titleTextAttributes = [.foregroundColor: UIColor.white]
+        
+        navigationController?.navigationBar.standardAppearance = appearance
+        navigationController?.navigationBar.scrollEdgeAppearance = appearance
     }
     
     private func setupSearchController() {
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.placeholder = "Search"
+        searchController.searchBar.tintColor = .systemYellow
         navigationItem.searchController = searchController
         definesPresentationContext = true
     }
@@ -104,33 +127,13 @@ extension TaskViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as? TaskTableViewCell else {
+            return UITableViewCell()
+        }
         let task = getTask(at: indexPath)
-        
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd/MM/yy"
-        let creationDate = dateFormatter.string(from: task.creationDate ?? Date())
-        
-        let titleAttributes: [NSAttributedString.Key: Any] = [
-            .font: UIFont.systemFont(ofSize: 16),
-            .foregroundColor: UIColor.label
-        ]
-        let titleText = NSAttributedString(string: task.title, attributes: titleAttributes)
-        
-        let dateAttributes: [NSAttributedString.Key: Any] = [
-            .font: UIFont.systemFont(ofSize: 12),
-            .foregroundColor: UIColor.gray
-        ]
-        let dateText = NSAttributedString(string: "\n\(creationDate)", attributes: dateAttributes)
-        
-        let combinedText = NSMutableAttributedString()
-        combinedText.append(titleText)
-        combinedText.append(dateText)
-        
-        cell.textLabel?.numberOfLines = 0
-        cell.textLabel?.attributedText = combinedText
-        cell.accessoryType = task.isCompleted ? .checkmark : .none
-        
+        cell.configure(with: task)
+        cell.backgroundColor = .black
+        cell.selectionStyle = .none
         return cell
     }
     
