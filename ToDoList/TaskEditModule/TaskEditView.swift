@@ -36,7 +36,7 @@ class TaskEditViewController: UIViewController {
     }
     
     private func setupUI() {
-        setupИackButton()
+        setupBackButton()
         view.backgroundColor = .black
         
         view.addSubview(dateLabel)
@@ -57,7 +57,7 @@ class TaskEditViewController: UIViewController {
         ])
     }
     
-    private func setupИackButton() {
+    private func setupBackButton() {
         view.backgroundColor = .black
         
         let backButton = UIButton(type: .system)
@@ -66,7 +66,7 @@ class TaskEditViewController: UIViewController {
         config.image = UIImage(systemName: "chevron.left")
         config.imagePadding = 5
         config.title = "Назад"
-        config.baseForegroundColor = .yellow
+        config.baseForegroundColor = .systemYellow
         config.contentInsets = .zero
         
         backButton.configuration = config
