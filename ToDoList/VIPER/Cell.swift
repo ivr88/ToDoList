@@ -48,12 +48,30 @@ class TaskTableViewCell: UITableViewCell {
     }
 
     func configure(with task: Task) {
-        titleLabel.text = task.title
+        if task.isCompleted {
+            let attributedText = NSAttributedString(
+                string: task.title,
+                attributes: [
+                    .strikethroughStyle: NSUnderlineStyle.single.rawValue,
+                    .foregroundColor: UIColor.gray
+                ]
+            )
+            titleLabel.attributedText = attributedText
+        } else {
+            titleLabel.attributedText = NSAttributedString(
+                string: task.title,
+                attributes: [
+                    .foregroundColor: UIColor.white
+                ]
+            )
+        }
+        
         if let date = task.creationDate {
             let formatter = DateFormatter()
             formatter.dateFormat = "dd/MM/yy"
             dateLabel.text = formatter.string(from: date)
         }
+        
         checkmarkView.image = task.isCompleted ? UIImage(systemName: "checkmark.circle") : UIImage(systemName: "circle")
         checkmarkView.tintColor = task.isCompleted ? .systemYellow : .gray
     }
