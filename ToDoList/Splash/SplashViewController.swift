@@ -17,7 +17,7 @@ class SplashViewController: UIViewController {
     }
     
     private func setupUI() {
-        view.backgroundColor = .white
+        view.backgroundColor = .black
         view.addSubview(logoImageView)
     }
     
