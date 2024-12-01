@@ -16,7 +16,7 @@ class TaskEditViewController: UIViewController {
     private let dateLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 14)
-        label.textColor = .lightGray
+        label.textColor = .customGray
         return label
     }()
     
@@ -66,7 +66,7 @@ class TaskEditViewController: UIViewController {
         config.image = UIImage(systemName: "chevron.left")
         config.imagePadding = 5
         config.title = "Назад"
-        config.baseForegroundColor = .systemYellow
+        config.baseForegroundColor = .customTellow
         config.contentInsets = .zero
         
         backButton.configuration = config
