@@ -184,6 +184,8 @@ class TaskViewController: UIViewController {
     }
 }
 
+//MARK: - TaskViewProtocol
+
 extension TaskViewController: TaskViewProtocol {
     func displayTasks(_ tasks: [Task]) {
         self.tasks = tasks
@@ -195,6 +197,8 @@ extension TaskViewController: TaskViewProtocol {
         }
     }
 }
+
+//MARK: - UITableViewDataSource, UITableViewDelegate
 
 extension TaskViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -239,6 +243,8 @@ extension TaskViewController: UITableViewDataSource, UITableViewDelegate {
     }
 }
 
+//MARK: - UISearchResultsUpdating
+
 extension TaskViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         updateFilteredTasks(for: searchController.searchBar.text)
@@ -264,6 +270,8 @@ extension TaskViewController: UISearchResultsUpdating {
         }
     }
 }
+
+//MARK: - TaskEditDelegate
 
 extension TaskViewController: TaskEditDelegate {
     func didUpdateTask() {
