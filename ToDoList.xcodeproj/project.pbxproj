@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1C06EF022CFB14D800B7C395 /* Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C06EF012CFB14D300B7C395 /* Cell.swift */; };
+		1C06EF022CFB14D800B7C395 /* TaskMainCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C06EF012CFB14D300B7C395 /* TaskMainCell.swift */; };
 		1C16B61B2C847FE1000C240D /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C16B61A2C847FE1000C240D /* SplashViewController.swift */; };
 		1C3992442C8371E100080092 /* Interactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3992432C8371E100080092 /* Interactor.swift */; };
 		1C3992462C83733E00080092 /* Presenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3992452C83733E00080092 /* Presenter.swift */; };
@@ -30,7 +30,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1C06EF012CFB14D300B7C395 /* Cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cell.swift; sourceTree = "<group>"; };
+		1C06EF012CFB14D300B7C395 /* TaskMainCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskMainCell.swift; sourceTree = "<group>"; };
 		1C16B61A2C847FE1000C240D /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		1C3992432C8371E100080092 /* Interactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Interactor.swift; sourceTree = "<group>"; };
 		1C3992452C83733E00080092 /* Presenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Presenter.swift; sourceTree = "<group>"; };
@@ -76,7 +76,7 @@
 		1C39923E2C836CE500080092 /* TaskMainModule */ = {
 			isa = PBXGroup;
 			children = (
-				1C06EF012CFB14D300B7C395 /* Cell.swift */,
+				1C06EF012CFB14D300B7C395 /* TaskMainCell.swift */,
 				1CC1E5E22CE91D51002AF49C /* Repository.swift */,
 				1C8669242C80D1CC004B5381 /* View.swift */,
 				1C86693A2C80DA5E004B5381 /* Entity.swift */,
@@ -257,7 +257,7 @@
 				1CDA7A5F2CF8EE540050BFCE /* TaskEditView.swift in Sources */,
 				1C5DA2132CFCD200009EBF20 /* UIColor.swift in Sources */,
 				1C3992462C83733E00080092 /* Presenter.swift in Sources */,
-				1C06EF022CFB14D800B7C395 /* Cell.swift in Sources */,
+				1C06EF022CFB14D800B7C395 /* TaskMainCell.swift in Sources */,
 				1C8790862C931377009ED58C /* APIService.swift in Sources */,
 				1C16B61B2C847FE1000C240D /* SplashViewController.swift in Sources */,
 				1CDA7A622CF8EE760050BFCE /* TaskEditPresenter.swift in Sources */,
