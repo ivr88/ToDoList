@@ -73,7 +73,7 @@
 			path = Splash;
 			sourceTree = "<group>";
 		};
-		1C39923E2C836CE500080092 /* VIPER */ = {
+		1C39923E2C836CE500080092 /* TaskMainModule */ = {
 			isa = PBXGroup;
 			children = (
 				1C06EF012CFB14D300B7C395 /* Cell.swift */,
@@ -84,7 +84,7 @@
 				1C3992432C8371E100080092 /* Interactor.swift */,
 				1C3992472C8373A800080092 /* Router.swift */,
 			);
-			path = VIPER;
+			path = TaskMainModule;
 			sourceTree = "<group>";
 		};
 		1C5DA2112CFCD1E6009EBF20 /* Extension */ = {
@@ -117,7 +117,7 @@
 				1C8790842C931369009ED58C /* APIService */,
 				1C8669372C80D8CD004B5381 /* App */,
 				1C16B6192C847F93000C240D /* Splash */,
-				1C39923E2C836CE500080092 /* VIPER */,
+				1C39923E2C836CE500080092 /* TaskMainModule */,
 				1CDA7A5D2CF8EE290050BFCE /* TaskEditModule */,
 				1C8669392C80D907004B5381 /* CoreData */,
 				1C5DA2112CFCD1E6009EBF20 /* Extension */,
