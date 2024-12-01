@@ -101,7 +101,7 @@ class TaskViewController: UIViewController {
         let editViewController = TaskEditRouter.createModule(withTask: task)
         
         if let editVC = editViewController as? TaskEditViewController {
-            editVC.delegate = self 
+            editVC.delegate = self
         }
         
         navigationController?.pushViewController(editViewController, animated: true)
@@ -112,7 +112,7 @@ class TaskViewController: UIViewController {
         
         let alert = UIAlertController(
             title: "Удалить задачу?",
-            message: "Вы уверены, что хотите удалить задачу?",
+            message: "Вы уверены, что хотите удалить задачу \"\(task.title)\"?",
             preferredStyle: .alert
         )
         
@@ -131,16 +131,16 @@ class TaskViewController: UIViewController {
         present(alert, animated: true)
     }
     
+    private func sendTask(_ task: Task) {
+        let activityViewController = UIActivityViewController(activityItems: [task.title], applicationActivities: nil)
+        present(activityViewController, animated: true)
+    }
+    
     func toggleTaskCompletion(at indexPath: IndexPath) {
         let task = getTask(at: indexPath)
         if let originalIndex = tasks.firstIndex(where: { $0.id == task.id }) {
             presenter?.toggleTaskCompletion(at: originalIndex)
         }
-    }
-    
-    private func sendTask(_ task: Task) {
-        let activityViewController = UIActivityViewController(activityItems: [task.title], applicationActivities: nil)
-        present(activityViewController, animated: true)
     }
 }
 
@@ -168,16 +168,33 @@ extension TaskViewController: UITableViewDataSource, UITableViewDelegate {
         cell.configure(with: task)
         cell.backgroundColor = .black
         cell.selectionStyle = .none
-        
-        let interaction = UIContextMenuInteraction(delegate: self)
-        cell.addInteraction(interaction)
-        
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         toggleTaskCompletion(at: indexPath)
         tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    func tableView(_ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
+        let task = getTask(at: indexPath)
+        
+        return UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { _ in
+            
+            let editAction = UIAction(title: "Редактировать", image: UIImage(systemName: "square.and.pencil")) { [weak self] _ in
+                self?.editTask(at: indexPath)
+            }
+            
+            let deleteAction = UIAction(title: "Удалить", image: UIImage(systemName: "trash"), attributes: .destructive) { [weak self] _ in
+                self?.deleteTask(at: indexPath)
+            }
+            
+            let sendAction = UIAction(title: "Отправить", image: UIImage(systemName: "square.and.arrow.up")) { [weak self] _ in
+                self?.sendTask(task)
+            }
+            
+            return UIMenu(title: "", children: [editAction, sendAction, deleteAction])
+        }
     }
 }
 
@@ -210,29 +227,5 @@ extension TaskViewController: UISearchResultsUpdating {
 extension TaskViewController: TaskEditDelegate {
     func didUpdateTask() {
         presenter?.viewDidLoad()
-    }
-}
-
-extension TaskViewController: UIContextMenuInteractionDelegate {
-    func contextMenuInteraction(_ interaction: UIContextMenuInteraction, configurationForMenuAtLocation location: CGPoint
-    ) -> UIContextMenuConfiguration? {
-        guard let indexPath = tableView.indexPathForRow(at: location) else { return nil }
-        let task = getTask(at: indexPath)
-
-        return UIContextMenuConfiguration(identifier: indexPath as NSIndexPath, previewProvider: nil) { _ in
-            let editAction = UIAction(title: "Редактировать", image: UIImage(systemName: "square.and.pencil")) { [weak self] _ in
-                self?.editTask(at: indexPath)
-            }
-            
-            let sendAction = UIAction(title: "Отправить", image: UIImage(systemName: "square.and.arrow.up")) { _ in
-                self.sendTask(task)
-            }
-            
-            let deleteAction = UIAction(title: "Удалить", image: UIImage(systemName: "trash"), attributes: .destructive) { [weak self] _ in
-                self?.deleteTask(at: indexPath)
-            }
-            
-            return UIMenu(title: "", children: [editAction, sendAction, deleteAction])
-        }
     }
 }
