@@ -11,7 +11,7 @@
 		1C16B61B2C847FE1000C240D /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C16B61A2C847FE1000C240D /* SplashViewController.swift */; };
 		1C3992442C8371E100080092 /* TaskMainInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3992432C8371E100080092 /* TaskMainInteractor.swift */; };
 		1C3992462C83733E00080092 /* TaskMainPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3992452C83733E00080092 /* TaskMainPresenter.swift */; };
-		1C3992482C8373A800080092 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3992472C8373A800080092 /* Router.swift */; };
+		1C3992482C8373A800080092 /* TaskMainRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3992472C8373A800080092 /* TaskMainRouter.swift */; };
 		1C5DA2132CFCD200009EBF20 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C5DA2122CFCD1FD009EBF20 /* UIColor.swift */; };
 		1C8669212C80D1CC004B5381 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C8669202C80D1CC004B5381 /* AppDelegate.swift */; };
 		1C8669232C80D1CC004B5381 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C8669222C80D1CC004B5381 /* SceneDelegate.swift */; };
@@ -34,7 +34,7 @@
 		1C16B61A2C847FE1000C240D /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		1C3992432C8371E100080092 /* TaskMainInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskMainInteractor.swift; sourceTree = "<group>"; };
 		1C3992452C83733E00080092 /* TaskMainPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskMainPresenter.swift; sourceTree = "<group>"; };
-		1C3992472C8373A800080092 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		1C3992472C8373A800080092 /* TaskMainRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskMainRouter.swift; sourceTree = "<group>"; };
 		1C5DA2122CFCD1FD009EBF20 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		1C86691D2C80D1CC004B5381 /* ToDoList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDoList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1C8669202C80D1CC004B5381 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -82,7 +82,7 @@
 				1C86693A2C80DA5E004B5381 /* TaskMainEntity.swift */,
 				1C3992452C83733E00080092 /* TaskMainPresenter.swift */,
 				1C3992432C8371E100080092 /* TaskMainInteractor.swift */,
-				1C3992472C8373A800080092 /* Router.swift */,
+				1C3992472C8373A800080092 /* TaskMainRouter.swift */,
 			);
 			path = TaskMainModule;
 			sourceTree = "<group>";
@@ -251,7 +251,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1C3992482C8373A800080092 /* Router.swift in Sources */,
+				1C3992482C8373A800080092 /* TaskMainRouter.swift in Sources */,
 				1C3992442C8371E100080092 /* TaskMainInteractor.swift in Sources */,
 				1C8790832C931238009ED58C /* CoreDataService.swift in Sources */,
 				1CDA7A5F2CF8EE540050BFCE /* TaskEditView.swift in Sources */,
