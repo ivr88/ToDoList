@@ -16,7 +16,7 @@ class TaskEditViewController: UIViewController {
     private let dateLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 14)
-        label.textColor = .customGray
+        label.textColor = .gray
         return label
     }()
     
