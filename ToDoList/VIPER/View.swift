@@ -14,6 +14,9 @@ class TaskViewController: UIViewController {
     
     private let tableView = UITableView()
     private let searchController = UISearchController(searchResultsController: nil)
+    private let bottomView = UIView()
+    private let addButton = UIButton()
+    private let taskCountLabel = UILabel()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,7 +30,7 @@ class TaskViewController: UIViewController {
     private func setupUI() {
         view.backgroundColor = .black
         view.addSubview(tableView)
-        tableView.frame = view.bounds
+        tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(TaskTableViewCell.self, forCellReuseIdentifier: "Cell")
@@ -35,14 +38,51 @@ class TaskViewController: UIViewController {
         tableView.separatorColor = .gray
         tableView.backgroundColor = .black
 
-        navigationItem.rightBarButtonItem = UIBarButtonItem(
-            image: UIImage(systemName: "square.and.pencil"),
-            style: .plain,
-            target: self,
-            action: #selector(addTask)
-        )
-        navigationItem.rightBarButtonItem?.tintColor = .systemYellow
+        view.addSubview(bottomView)
+        bottomView.translatesAutoresizingMaskIntoConstraints = false
+        bottomView.backgroundColor = .black
+        bottomView.addSubview(addButton)
+        
+        addButton.translatesAutoresizingMaskIntoConstraints = false
+        addButton.setImage(UIImage(systemName: "square.and.pencil"), for: .normal)
+        addButton.tintColor = .systemYellow
+        addButton.addTarget(self, action: #selector(addTask), for: .touchUpInside)
+        
+        bottomView.addSubview(taskCountLabel)
+        taskCountLabel.translatesAutoresizingMaskIntoConstraints = false
+        taskCountLabel.textColor = .white
+        taskCountLabel.font = UIFont.systemFont(ofSize: 14)
+
+        setupConstraints()
     }
+    
+    private func setupConstraints() {
+       NSLayoutConstraint.activate([
+           tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+           tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+           tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+           tableView.bottomAnchor.constraint(equalTo: bottomView.topAnchor)
+       ])
+
+       NSLayoutConstraint.activate([
+        bottomView.heightAnchor.constraint(equalToConstant: view.bounds.height / 10),
+           bottomView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+           bottomView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+           bottomView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+       ])
+
+        NSLayoutConstraint.activate([
+            addButton.trailingAnchor.constraint(equalTo: bottomView.trailingAnchor, constant: -8),
+            addButton.centerYAnchor.constraint(equalTo: bottomView.centerYAnchor),
+            addButton.widthAnchor.constraint(equalToConstant: 80),
+            addButton.heightAnchor.constraint(equalToConstant: 80)
+        ])
+        
+        NSLayoutConstraint.activate([
+            taskCountLabel.centerXAnchor.constraint(equalTo: bottomView.centerXAnchor),
+            taskCountLabel.centerYAnchor.constraint(equalTo: bottomView.centerYAnchor)
+        ])
+   }
     
     private func setupTitle() {
         let titleLabel = UILabel()
@@ -147,6 +187,7 @@ class TaskViewController: UIViewController {
 extension TaskViewController: TaskViewProtocol {
     func displayTasks(_ tasks: [Task]) {
         self.tasks = tasks
+        taskCountLabel.text = "\(tasks.count) Задач"
         if isSearching {
             updateFilteredTasks(for: searchController.searchBar.text)
         } else {
