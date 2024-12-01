@@ -19,7 +19,7 @@
 		1C86692B2C80D1CC004B5381 /* ToDoList.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1C8669292C80D1CC004B5381 /* ToDoList.xcdatamodeld */; };
 		1C86692D2C80D1CE004B5381 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1C86692C2C80D1CE004B5381 /* Assets.xcassets */; };
 		1C8669302C80D1CE004B5381 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 1C86692F2C80D1CE004B5381 /* Base */; };
-		1C86693B2C80DA5E004B5381 /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C86693A2C80DA5E004B5381 /* Entity.swift */; };
+		1C86693B2C80DA5E004B5381 /* TaskMainEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C86693A2C80DA5E004B5381 /* TaskMainEntity.swift */; };
 		1C8790832C931238009ED58C /* CoreDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C8790822C931238009ED58C /* CoreDataService.swift */; };
 		1C8790862C931377009ED58C /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C8790852C931377009ED58C /* APIService.swift */; };
 		1CC1E5E32CE91D57002AF49C /* TaskMainRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC1E5E22CE91D51002AF49C /* TaskMainRepository.swift */; };
@@ -44,7 +44,7 @@
 		1C86692C2C80D1CE004B5381 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1C86692F2C80D1CE004B5381 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1C8669312C80D1CE004B5381 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		1C86693A2C80DA5E004B5381 /* Entity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entity.swift; sourceTree = "<group>"; };
+		1C86693A2C80DA5E004B5381 /* TaskMainEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskMainEntity.swift; sourceTree = "<group>"; };
 		1C8790822C931238009ED58C /* CoreDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataService.swift; sourceTree = "<group>"; };
 		1C8790852C931377009ED58C /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		1CC1E5E22CE91D51002AF49C /* TaskMainRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskMainRepository.swift; sourceTree = "<group>"; };
@@ -79,7 +79,7 @@
 				1C06EF012CFB14D300B7C395 /* TaskMainCell.swift */,
 				1CC1E5E22CE91D51002AF49C /* TaskMainRepository.swift */,
 				1C8669242C80D1CC004B5381 /* TaskMainView.swift */,
-				1C86693A2C80DA5E004B5381 /* Entity.swift */,
+				1C86693A2C80DA5E004B5381 /* TaskMainEntity.swift */,
 				1C3992452C83733E00080092 /* Presenter.swift */,
 				1C3992432C8371E100080092 /* Interactor.swift */,
 				1C3992472C8373A800080092 /* Router.swift */,
@@ -261,7 +261,7 @@
 				1C8790862C931377009ED58C /* APIService.swift in Sources */,
 				1C16B61B2C847FE1000C240D /* SplashViewController.swift in Sources */,
 				1CDA7A622CF8EE760050BFCE /* TaskEditPresenter.swift in Sources */,
-				1C86693B2C80DA5E004B5381 /* Entity.swift in Sources */,
+				1C86693B2C80DA5E004B5381 /* TaskMainEntity.swift in Sources */,
 				1CDA7A662CF8EEC60050BFCE /* TaskEditRouter.swift in Sources */,
 				1C8669252C80D1CC004B5381 /* TaskMainView.swift in Sources */,
 				1C8669212C80D1CC004B5381 /* AppDelegate.swift in Sources */,
