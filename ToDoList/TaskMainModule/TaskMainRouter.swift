@@ -1,23 +1,12 @@
 import UIKit
 
 protocol TaskRouterProtocol: AnyObject {
-    static func createModule() -> UIViewController
+    func navigateToTaskEditScreen(from viewController: UIViewController, with task: Task)
 }
 
 final class TaskRouter: TaskRouterProtocol {
-    static func createModule() -> UIViewController {
-        let viewController = TaskViewController()
-        let presenter = TaskPresenter()
-        let coreDataService = CoreDataService()
-        let apiService = APIService()
-        let repository = TaskRepository(coreDataService: coreDataService, apiService: apiService)
-        let interactor = TaskInteractor(repository: repository)
-        let router: TaskRouterProtocol = TaskRouter()
-        viewController.presenter = presenter
-        presenter.view = viewController
-        presenter.interactor = interactor
-        presenter.router = router
-        interactor.presenter = presenter
-        return viewController
+    func navigateToTaskEditScreen(from viewController: UIViewController, with task: Task) {
+        let taskEditViewController = TaskEditBuilder.createModule(with: task)
+        viewController.navigationController?.pushViewController(taskEditViewController, animated: true)
     }
 }
