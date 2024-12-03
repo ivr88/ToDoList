@@ -8,7 +8,7 @@ protocol TaskRepositoryProtocol {
     func deleteTask(withID id: Int)
 }
 
-class TaskRepository: TaskRepositoryProtocol {
+final class TaskRepository: TaskRepositoryProtocol {
     private let coreDataService: TaskServiceProtocol
     private let apiService: TaskAPIServiceProtocol
 
