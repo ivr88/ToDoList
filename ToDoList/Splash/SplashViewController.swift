@@ -1,6 +1,6 @@
 import UIKit
 
-class SplashViewController: UIViewController {
+final class SplashViewController: UIViewController {
     
     private let logoImageView: UIImageView = {
         let imageView = UIImageView(image: UIImage(named: "Splash"))
@@ -21,7 +21,7 @@ class SplashViewController: UIViewController {
         view.addSubview(logoImageView)
     }
     
-    func setupConstraint() {
+    private func setupConstraint() {
         NSLayoutConstraint.activate([
             logoImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             logoImageView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
@@ -30,7 +30,7 @@ class SplashViewController: UIViewController {
         ])
     }
     
-    func setupShow() {
+    private func setupShow() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
             self.showMainApp()
         }
