@@ -4,7 +4,7 @@ protocol TaskEditRouterProtocol: AnyObject {
     static func createModule(withTask task: Task) -> UIViewController
 }
 
-class TaskEditRouter: TaskEditRouterProtocol {
+final class TaskEditRouter: TaskEditRouterProtocol {
     static func createModule(withTask task: Task) -> UIViewController {
         let viewController = TaskEditViewController()
         let presenter = TaskEditPresenter()
