@@ -8,7 +8,7 @@ protocol TaskEditDelegate: AnyObject {
     func didUpdateTask()
 }
 
-class TaskEditViewController: UIViewController {
+final class TaskEditViewController: UIViewController {
     
     var presenter: TaskEditPresenterProtocol?
     weak var delegate: TaskEditDelegate?
