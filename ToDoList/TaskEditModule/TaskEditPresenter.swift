@@ -5,7 +5,7 @@ protocol TaskEditPresenterProtocol: AnyObject {
     func saveTask(title: String)
 }
 
-class TaskEditPresenter: TaskEditPresenterProtocol {
+final class TaskEditPresenter: TaskEditPresenterProtocol {
     
     weak var view: TaskEditViewProtocol?
     var interactor: TaskEditInteractorProtocol?
