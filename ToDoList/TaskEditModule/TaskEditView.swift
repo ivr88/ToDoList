@@ -66,7 +66,7 @@ final class TaskEditViewController: UIViewController {
         config.image = UIImage(systemName: "chevron.left")
         config.imagePadding = 5
         config.title = "Назад"
-        config.baseForegroundColor = .customTellow
+        config.baseForegroundColor = .customYellow
         config.contentInsets = .zero
         
         backButton.configuration = config

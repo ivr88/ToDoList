@@ -45,7 +45,7 @@ final class TaskViewController: UIViewController {
         
         addButton.translatesAutoresizingMaskIntoConstraints = false
         addButton.setImage(UIImage(systemName: "square.and.pencil"), for: .normal)
-        addButton.tintColor = .customTellow
+        addButton.tintColor = .customYellow
         addButton.addTarget(self, action: #selector(addTask), for: .touchUpInside)
         
         bottomView.addSubview(taskCountLabel)
@@ -111,7 +111,7 @@ final class TaskViewController: UIViewController {
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.placeholder = "Search"
-        searchController.searchBar.tintColor = .customTellow
+        searchController.searchBar.tintColor = .customYellow
         searchController.searchBar.searchTextField.overrideUserInterfaceStyle = .dark
         navigationItem.searchController = searchController
         definesPresentationContext = true
