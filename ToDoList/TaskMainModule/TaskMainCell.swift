@@ -1,6 +1,6 @@
 import UIKit
 
-class TaskTableViewCell: UITableViewCell {
+final class TaskTableViewCell: UITableViewCell {
     private let titleLabel = UILabel()
     private let dateLabel = UILabel()
     private let checkmarkView = UIImageView()
