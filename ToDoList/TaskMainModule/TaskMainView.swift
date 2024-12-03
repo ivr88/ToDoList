@@ -7,6 +7,7 @@ protocol TaskViewProtocol: AnyObject {
 final class TaskViewController: UIViewController {
     
     var presenter: TaskPresenterProtocol?
+    var router: TaskRouterProtocol?
     
     private var tasks: [Task] = []
     private var filteredTasks: [Task] = []
@@ -138,14 +139,8 @@ final class TaskViewController: UIViewController {
     }
     
     private func editTask(at indexPath: IndexPath) {
-        let task = getTask(at: indexPath)
-        let editViewController = TaskEditRouter.createModule(withTask: task)
-        
-        if let editVC = editViewController as? TaskEditViewController {
-            editVC.delegate = self
-        }
-        
-        navigationController?.pushViewController(editViewController, animated: true)
+        let task = tasks[indexPath.row]
+        router?.navigateToTaskEditScreen(from: self, with: task)
     }
     
     private func deleteTask(at indexPath: IndexPath) {
