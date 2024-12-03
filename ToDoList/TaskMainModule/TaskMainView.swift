@@ -112,6 +112,7 @@ final class TaskViewController: UIViewController {
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.placeholder = "Search"
         searchController.searchBar.tintColor = .customTellow
+        searchController.searchBar.searchTextField.overrideUserInterfaceStyle = .dark
         navigationItem.searchController = searchController
         definesPresentationContext = true
     }
