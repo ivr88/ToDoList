@@ -4,7 +4,7 @@ protocol TaskEditInteractorProtocol: AnyObject {
     func updateTask(_ task: Task)
 }
 
-class TaskEditInteractor: TaskEditInteractorProtocol {
+final class TaskEditInteractor: TaskEditInteractorProtocol {
     private let repository: TaskRepositoryProtocol
     
     init(repository: TaskRepositoryProtocol) {
