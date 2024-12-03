@@ -13,7 +13,7 @@ final class TaskBuilder {
         presenter.interactor = interactor
         presenter.router = router
         interactor.presenter = presenter
-
+        viewController.router = router
         return viewController
     }
 }
