@@ -8,7 +8,7 @@ protocol TaskServiceProtocol {
     func deleteTask(withID id: Int)
 }
 
-private class CoreDataService: TaskServiceProtocol {
+class CoreDataService: TaskServiceProtocol {
     private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     func fetchTasks() -> [Task] {
