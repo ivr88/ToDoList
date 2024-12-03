@@ -12,6 +12,7 @@ final class TaskEditViewController: UIViewController {
     
     var presenter: TaskEditPresenterProtocol?
     weak var delegate: TaskEditDelegate?
+    var router: TaskEditRouterProtocol?
     
     private let dateLabel: UILabel = {
         let label = UILabel()
@@ -81,7 +82,7 @@ final class TaskEditViewController: UIViewController {
             presenter?.saveTask(title: title)
             delegate?.didUpdateTask() 
         }
-        navigationController?.popViewController(animated: true)
+        router?.navigateBackToTaskList(from: self)
     }
 }
 
