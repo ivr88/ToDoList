@@ -10,7 +10,7 @@ protocol TaskInteractorProtocol: AnyObject {
     func toggleTaskCompletion(at index: Int)
 }
 
-class TaskInteractor: TaskInteractorProtocol {
+final class TaskInteractor: TaskInteractorProtocol {
     weak var presenter: TaskInteractorOutputProtocol?
     private let repository: TaskRepositoryProtocol
     private var tasks: [Task] = []
