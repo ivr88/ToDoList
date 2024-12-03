@@ -40,7 +40,7 @@ final class SplashViewController: UIViewController {
         guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
               let sceneDelegate = windowScene.delegate as? SceneDelegate else { return }
         
-        let taskModule = TaskRouter.createModule()
+        let taskModule = TaskBuilder.createModule()
         let navigationController = UINavigationController(rootViewController: taskModule)
         sceneDelegate.window?.rootViewController = navigationController
         sceneDelegate.window?.makeKeyAndVisible()
