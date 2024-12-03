@@ -4,7 +4,7 @@ protocol TaskViewProtocol: AnyObject {
     func displayTasks(_ tasks: [Task])
 }
 
-class TaskViewController: UIViewController {
+final class TaskViewController: UIViewController {
     
     var presenter: TaskPresenterProtocol?
     
@@ -136,7 +136,7 @@ class TaskViewController: UIViewController {
         return isSearching ? filteredTasks[indexPath.row] : tasks[indexPath.row]
     }
     
-    func editTask(at indexPath: IndexPath) {
+    private func editTask(at indexPath: IndexPath) {
         let task = getTask(at: indexPath)
         let editViewController = TaskEditRouter.createModule(withTask: task)
         
@@ -147,7 +147,7 @@ class TaskViewController: UIViewController {
         navigationController?.pushViewController(editViewController, animated: true)
     }
     
-    func deleteTask(at indexPath: IndexPath) {
+    private func deleteTask(at indexPath: IndexPath) {
         let task = getTask(at: indexPath)
         
         let alert = UIAlertController(
@@ -176,7 +176,7 @@ class TaskViewController: UIViewController {
         present(activityViewController, animated: true)
     }
     
-    func toggleTaskCompletion(at indexPath: IndexPath) {
+    private func toggleTaskCompletion(at indexPath: IndexPath) {
         let task = getTask(at: indexPath)
         if let originalIndex = tasks.firstIndex(where: { $0.id == task.id }) {
             presenter?.toggleTaskCompletion(at: originalIndex)
