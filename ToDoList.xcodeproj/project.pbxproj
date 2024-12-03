@@ -12,6 +12,8 @@
 		1C3992442C8371E100080092 /* TaskMainInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3992432C8371E100080092 /* TaskMainInteractor.swift */; };
 		1C3992462C83733E00080092 /* TaskMainPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3992452C83733E00080092 /* TaskMainPresenter.swift */; };
 		1C3992482C8373A800080092 /* TaskMainRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3992472C8373A800080092 /* TaskMainRouter.swift */; };
+		1C571E962CFF89EE00FCE5F0 /* TaskMainBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C571E952CFF89E600FCE5F0 /* TaskMainBuilder.swift */; };
+		1C571E9A2CFF907D00FCE5F0 /* TaskEditBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C571E992CFF907B00FCE5F0 /* TaskEditBuilder.swift */; };
 		1C5DA2132CFCD200009EBF20 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C5DA2122CFCD1FD009EBF20 /* UIColor.swift */; };
 		1C8669212C80D1CC004B5381 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C8669202C80D1CC004B5381 /* AppDelegate.swift */; };
 		1C8669232C80D1CC004B5381 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C8669222C80D1CC004B5381 /* SceneDelegate.swift */; };
@@ -35,6 +37,8 @@
 		1C3992432C8371E100080092 /* TaskMainInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskMainInteractor.swift; sourceTree = "<group>"; };
 		1C3992452C83733E00080092 /* TaskMainPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskMainPresenter.swift; sourceTree = "<group>"; };
 		1C3992472C8373A800080092 /* TaskMainRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskMainRouter.swift; sourceTree = "<group>"; };
+		1C571E952CFF89E600FCE5F0 /* TaskMainBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskMainBuilder.swift; sourceTree = "<group>"; };
+		1C571E992CFF907B00FCE5F0 /* TaskEditBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskEditBuilder.swift; sourceTree = "<group>"; };
 		1C5DA2122CFCD1FD009EBF20 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		1C86691D2C80D1CC004B5381 /* ToDoList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDoList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1C8669202C80D1CC004B5381 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -83,6 +87,7 @@
 				1C3992452C83733E00080092 /* TaskMainPresenter.swift */,
 				1C3992432C8371E100080092 /* TaskMainInteractor.swift */,
 				1C3992472C8373A800080092 /* TaskMainRouter.swift */,
+				1C571E952CFF89E600FCE5F0 /* TaskMainBuilder.swift */,
 			);
 			path = TaskMainModule;
 			sourceTree = "<group>";
@@ -177,6 +182,7 @@
 				1CDA7A612CF8EE750050BFCE /* TaskEditPresenter.swift */,
 				1CDA7A632CF8EE930050BFCE /* TaskEditInteractor.swift */,
 				1CDA7A652CF8EEC40050BFCE /* TaskEditRouter.swift */,
+				1C571E992CFF907B00FCE5F0 /* TaskEditBuilder.swift */,
 			);
 			path = TaskEditModule;
 			sourceTree = "<group>";
@@ -257,6 +263,7 @@
 				1CDA7A5F2CF8EE540050BFCE /* TaskEditView.swift in Sources */,
 				1C5DA2132CFCD200009EBF20 /* UIColor.swift in Sources */,
 				1C3992462C83733E00080092 /* TaskMainPresenter.swift in Sources */,
+				1C571E9A2CFF907D00FCE5F0 /* TaskEditBuilder.swift in Sources */,
 				1C06EF022CFB14D800B7C395 /* TaskMainCell.swift in Sources */,
 				1C8790862C931377009ED58C /* APIService.swift in Sources */,
 				1C16B61B2C847FE1000C240D /* SplashViewController.swift in Sources */,
@@ -266,6 +273,7 @@
 				1C8669252C80D1CC004B5381 /* TaskMainView.swift in Sources */,
 				1C8669212C80D1CC004B5381 /* AppDelegate.swift in Sources */,
 				1CDA7A642CF8EE950050BFCE /* TaskEditInteractor.swift in Sources */,
+				1C571E962CFF89EE00FCE5F0 /* TaskMainBuilder.swift in Sources */,
 				1C8669232C80D1CC004B5381 /* SceneDelegate.swift in Sources */,
 				1C86692B2C80D1CC004B5381 /* ToDoList.xcdatamodeld in Sources */,
 				1CC1E5E32CE91D57002AF49C /* TaskMainRepository.swift in Sources */,
