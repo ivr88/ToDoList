@@ -12,7 +12,7 @@ protocol TaskInteractorOutputProtocol: AnyObject {
     func didFetchTasks(_ tasks: [Task])
 }
 
-class TaskPresenter: TaskPresenterProtocol {
+final class TaskPresenter: TaskPresenterProtocol {
 
     weak var view: TaskViewProtocol?
     var interactor: TaskInteractorProtocol?
